@@ -1,5 +1,6 @@
 package ar.com.grupoesfera.repartir.services;
 
+import ar.com.grupoesfera.repartir.exceptions.GastoNegativoException;
 import ar.com.grupoesfera.repartir.exceptions.GrupoInvalidoException;
 import ar.com.grupoesfera.repartir.exceptions.GrupoNoEncontradoException;
 import ar.com.grupoesfera.repartir.model.Gasto;
@@ -104,7 +105,7 @@ class GruposServiceTest {
     }
 
     @Test
-    void agregarGastoDe300AlGrupoDelAlmuerzoSinGastos() {
+    void agregarGastoDe300AlGrupoDelAlmuerzoSinGastos() throws GastoNegativoException {
 
         final Long ID_ALMUERZO = 231L;
         final Grupo ALMUERZO = crearGrupoAlmuerzoSinGastos(ID_ALMUERZO);
@@ -139,7 +140,7 @@ class GruposServiceTest {
     }
 
     @Test
-    void agregarGastoDe97AlGrupoDelViajeQueTeniaComoTotal112() {
+    void agregarGastoDe97AlGrupoDelViajeQueTeniaComoTotal112() throws GastoNegativoException {
 
         final Long ID_VIAJE = 89L;
         final Grupo VIAJE = crearGrupoViajeConTotal112(ID_VIAJE);

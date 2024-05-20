@@ -1,16 +1,16 @@
 package ar.com.grupoesfera.repartir.services;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import ar.com.grupoesfera.repartir.exceptions.DivisionInvalidaException;
+import ar.com.grupoesfera.repartir.exceptions.GastoNegativoException;
 import ar.com.grupoesfera.repartir.model.Gasto;
 import ar.com.grupoesfera.repartir.model.Grupo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 import java.math.BigDecimal;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MontosServiceTest {
 
@@ -38,7 +38,7 @@ class MontosServiceTest {
     }
 
     @Test
-    void acumularMontoDelGastoAlTotalDelGrupo() {
+    void acumularMontoDelGastoAlTotalDelGrupo() throws GastoNegativoException {
 
         Grupo grupo = new Grupo();
         grupo.setTotal($(300,51));

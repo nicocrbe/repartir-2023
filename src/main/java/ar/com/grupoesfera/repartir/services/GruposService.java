@@ -1,5 +1,6 @@
 package ar.com.grupoesfera.repartir.services;
 
+import ar.com.grupoesfera.repartir.exceptions.GastoNegativoException;
 import ar.com.grupoesfera.repartir.exceptions.GrupoInvalidoException;
 import ar.com.grupoesfera.repartir.exceptions.GrupoNoEncontradoException;
 import ar.com.grupoesfera.repartir.model.Gasto;
@@ -53,7 +54,7 @@ public class GruposService {
         return grupoBuscado.get();
     }
 
-    public Grupo agregarGasto(Long id, Gasto gasto) {
+    public Grupo agregarGasto(Long id, Gasto gasto) throws GastoNegativoException {
 
         Grupo grupo = recuperar(id);
         montos.acumularAlTotal(grupo, gasto);
