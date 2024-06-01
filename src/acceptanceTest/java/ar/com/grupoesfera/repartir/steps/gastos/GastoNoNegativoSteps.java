@@ -44,4 +44,16 @@ public class GastoNoNegativoSteps extends CucumberSteps {
                 .as("Descripción del Toast")
                 .contains("No se puede guardar");
     }
+
+    @Entonces("se muestra un mensaje indicando que el gasto fue agregado correctamente")
+    public void seMuestraUnMensajeIndicandoQueElGastoFueAgregadoCorrectamente() {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebElement mensajesToast = wait.withMessage("Mostro Toast")
+                .until(ExpectedConditions.visibilityOfElementLocated(By.id("mensajesToast")));
+        wait.withMessage("Título del Toast es 'Éxito'")
+                .until(ExpectedConditions.textToBePresentInElement(mensajesToast, "Gasto agregado"));
+        assertThat(mensajesToast.getText())
+                .as("Descripción del Toast")
+                .contains("Gasto agregado");
+    }
 }
